@@ -1,3 +1,7 @@
+@import "styles/_normalize.scss";
+@import "styles/_variables.scss";
+@import "styles/grid/grid";
+
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
@@ -11,8 +15,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$crypto-bot-primary: mat-palette($mat-indigo);
-$crypto-bot-accent: mat-palette($mat-pink, A200, A100, A400);
+$crypto-bot-primary: mat-palette($mat-grey);
+$crypto-bot-accent: mat-palette($mat-deep-orange, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $crypto-bot-warn: mat-palette($mat-red);
@@ -27,3 +31,12 @@ $crypto-bot-theme: mat-light-theme($crypto-bot-primary, $crypto-bot-accent, $cry
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.logo {
+  font-size: 34px;
+  font-weight: 700;
+}
+
+mat-form-field {
+  width: 100%;
+}

@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <a routerLink="/" class="logo">CryptoBot</a>
+
+  <ul class="nav">
+    <li *ngIf="!isAuthenticated"><a routerLink="/signin" class="nav-item">Sign in</a></li>
+    <li *ngIf="!isAuthenticated"><a routerLink="/signup" class="nav-item">Sign up</a></li>
+    <li *ngIf="isAuthenticated">
+      <span [matMenuTriggerFor]="afterMenu" class="nav-item">My Account</span>
+      <mat-menu #afterMenu="matMenu" xPosition="after">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item (click)="onSignout()">Signout</button>
+      </mat-menu>
+    </li>
+  </ul>
+</mat-toolbar>

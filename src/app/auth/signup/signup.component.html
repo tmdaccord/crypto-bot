@@ -1,0 +1,43 @@
+<div class="row row-xs-center">
+  <div class="col-xs-12 col-sm-10 col-md-6">
+    <div class="alert alert-danger" *ngIf="error">
+      <p>{{ error }}</p>
+    </div>
+    <!--    <div *ngIf="isLoading">-->
+    <!--      <app-loading-spinner></app-loading-spinner>-->
+    <!--    </div>-->
+    <h2>Sign up</h2>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <input matInput placeholder="Enter your email"
+               [formControl]="email"
+               required
+        >
+        <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Enter your password"
+               [formControl]="password"
+               [type]="showPassword ? 'text' : 'password'"
+               required
+        >
+        <mat-error *ngIf="password.invalid">You must enter a password</mat-error>
+        <button mat-icon-button matSuffix
+                (click)="showPassword = !showPassword"
+                [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="showPassword"
+                type="button"
+        >
+          <mat-icon>{{showPassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-checkbox [formControl]="checkAgreement" required>Accept <a routerLink="/user-agreement">User Agreement</a>
+      </mat-checkbox>
+      <div>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!signupForm.valid">Sign up</button>
+      </div>
+      <p>Already have an account? <a routerLink="/signin">Sign in!</a></p>
+    </form>
+  </div>
+</div>

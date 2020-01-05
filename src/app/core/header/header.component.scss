@@ -1,0 +1,16 @@
+.mat-toolbar {
+  justify-content: space-between;
+}
+
+.nav {
+  display: flex;
+  margin-left: -20px;
+
+  > li {
+    margin-left: 20px;
+  }
+}
+
+.nav-item {
+  cursor: pointer;
+}
