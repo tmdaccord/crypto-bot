@@ -2,6 +2,11 @@
   <a routerLink="/" class="logo">CryptoBot</a>
 
   <ul class="nav">
+    <li><a routerLink="/exchange-rates" class="nav-item">Exchange Rates</a></li>
+    <li *ngIf="isAuthenticated"><a routerLink="/signup" class="nav-item">My Bots</a></li>
+  </ul>
+
+  <ul class="nav">
     <li *ngIf="!isAuthenticated"><a routerLink="/signin" class="nav-item">Sign in</a></li>
     <li *ngIf="!isAuthenticated"><a routerLink="/signup" class="nav-item">Sign up</a></li>
     <li *ngIf="isAuthenticated">

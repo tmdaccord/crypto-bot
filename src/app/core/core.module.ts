@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './header/header.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {HeaderComponent} from './header/header.component';
 import {MatMenuModule, MatToolbarModule} from '@angular/material';
 import {AppRoutingModule} from '../app-routing.module';
-import { HomeComponent } from './home/home.component';
-import { FooterComponent } from './footer/footer.component';
-import { UserAgreementComponent } from './user-agreement/user-agreement.component';
+import {HomeComponent} from './home/home.component';
+import {FooterComponent} from './footer/footer.component';
+import {UserAgreementComponent} from './user-agreement/user-agreement.component';
 import {CoreRoutingModule} from './core-routing.module';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AuthInterceptorService} from '../auth/auth-interceptor.service';
@@ -21,7 +21,8 @@ import {AuthInterceptorService} from '../auth/auth-interceptor.service';
     MatMenuModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   providers: [
     {
@@ -31,4 +32,5 @@ import {AuthInterceptorService} from '../auth/auth-interceptor.service';
     }
   ]
 })
-export class CoreModule { }
+export class CoreModule {
+}

@@ -11,6 +11,9 @@ import {reducers} from './store/app.reducers';
 import {HttpClientModule} from '@angular/common/http';
 import {EffectsModule} from '@ngrx/effects';
 import {AuthEffects} from './auth/store/auth.effects';
+import {ExchangeRatesModule} from './exchange-rates/exchange-rates.module';
+import {ExchangeRatesEffects} from './exchange-rates/store/exchange-rates.effects';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -23,8 +26,10 @@ import {AuthEffects} from './auth/store/auth.effects';
     BrowserAnimationsModule,
     CoreModule,
     AuthModule,
+    SharedModule,
+    ExchangeRatesModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, ExchangeRatesEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]
