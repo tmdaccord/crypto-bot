@@ -1,7 +1,7 @@
 <h3>Exchange Rates</h3>
 <div class="row">
-  <div class="col-6 col-sm-3" *appMultipleColumns="let rate of rates">
-    <div *ngFor="let rate of rates; let i = index">
+  <div class="col-6 col-sm-3">
+    <div *appMultipleColumns="let rate of rates; let i = index">
       <strong>{{ rate.code }}: </strong>
       <span>{{ rate.rate }}</span>
     </div>
