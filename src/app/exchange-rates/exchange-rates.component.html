@@ -1,9 +1,9 @@
 <h3>Exchange Rates</h3>
 <div class="row">
-  <div class="col-6 col-sm-3">
-    <div *appMultipleColumns="let rate of rates; let i = index">
+  <ul class="col-6 col-sm-3" *ngFor="let rateGroup of rates | async | grouped:4">
+    <li *ngFor="let rate of rateGroup">
       <strong>{{ rate.code }}: </strong>
       <span>{{ rate.rate }}</span>
-    </div>
-  </div>
+    </li>
+  </ul>
 </div>

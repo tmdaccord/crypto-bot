@@ -1,16 +1,16 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MultipleColumnsDirective} from './multiple-columns.directive';
+import { GroupedPipe } from './grouped.pipe';
 
 
 @NgModule({
-  declarations: [MultipleColumnsDirective],
   imports: [
     CommonModule
   ],
   exports: [
-    MultipleColumnsDirective
-  ]
+    GroupedPipe
+  ],
+  declarations: [GroupedPipe]
 })
 export class SharedModule {
 }

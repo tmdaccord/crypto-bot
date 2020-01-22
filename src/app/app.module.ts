@@ -14,6 +14,7 @@ import {AuthEffects} from './auth/store/auth.effects';
 import {ExchangeRatesModule} from './exchange-rates/exchange-rates.module';
 import {ExchangeRatesEffects} from './exchange-rates/store/exchange-rates.effects';
 import {SharedModule} from './shared/shared.module';
+import {BotsModule} from './bots/bots.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {SharedModule} from './shared/shared.module';
     AuthModule,
     SharedModule,
     ExchangeRatesModule,
+    BotsModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([AuthEffects, ExchangeRatesEffects]),
   ],
