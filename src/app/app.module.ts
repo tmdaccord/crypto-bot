@@ -15,6 +15,7 @@ import {ExchangeRatesModule} from './exchange-rates/exchange-rates.module';
 import {ExchangeRatesEffects} from './exchange-rates/store/exchange-rates.effects';
 import {SharedModule} from './shared/shared.module';
 import {BotsModule} from './bots/bots.module';
+import {BotEffects} from "./bots/store/bot.effects";
 
 @NgModule({
   declarations: [
@@ -23,15 +24,15 @@ import {BotsModule} from './bots/bots.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    CoreModule,
+    AppRoutingModule,
     AuthModule,
     SharedModule,
     ExchangeRatesModule,
     BotsModule,
+    CoreModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([AuthEffects, ExchangeRatesEffects]),
+    EffectsModule.forRoot([AuthEffects, ExchangeRatesEffects, BotEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]

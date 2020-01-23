@@ -1,1 +1,7 @@
-<p>bots-list works!</p>
+<a routerLink="new">Create new Bot</a>
+
+<ul>
+  <li *ngFor="let bot of bots">
+    <h4>{{bot.name}}</h4>
+  </li>
+</ul>
