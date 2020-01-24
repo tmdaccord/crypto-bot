@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {ExchangeRatesComponent} from './exchange-rates.component';
+import {ExchangeRatesComponent} from "./exchange-rates/exchange-rates.component";
 
 
 const exchangeRoutes: Routes = [
@@ -11,5 +11,5 @@ const exchangeRoutes: Routes = [
   imports: [RouterModule.forChild(exchangeRoutes)],
   exports: [RouterModule]
 })
-export class ExchangeRatesRoutingModule {
+export class ExchangesRoutingModule {
 }

@@ -1,14 +1,31 @@
-// import {Actions, createEffect, ofType} from '@ngrx/effects';
+import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {Injectable} from '@angular/core';
-// import * as RecipeActions from './recipe.actions';
-// import {map, switchMap, withLatestFrom} from 'rxjs/operators';
-// import {HttpClient} from '@angular/common/http';
-// import {Recipe} from '../recipe.model';
-// import {AppState} from '../../store/app.reducers';
-// import {Store} from '@ngrx/store';
-//
+import * as BotActions from './bot.actions';
+import {map, switchMap, withLatestFrom} from 'rxjs/operators';
+import {HttpClient} from '@angular/common/http';
+import {AppState} from '../../store/app.reducers';
+import {Store} from '@ngrx/store';
+
 @Injectable()
 export class BotEffects {
+  storeBots$ = createEffect(
+    () => this.actions$.pipe(
+      ofType(BotActions.addBot),
+      withLatestFrom(this.store.select('userBots')),
+      switchMap(([action, botsState]) => {
+        return this.httpClient.put('https://ng-crypto-bot.firebaseio.com/user-bots.json',
+          botsState.bots
+        ).pipe(
+          map(() => {
+            return action;
+          })
+        );
+      })
+    ),
+    {dispatch: false}
+  );
+
+
 //   fetchRecipes$ = createEffect(() => this.actions$.pipe(
 //     ofType(RecipeActions.fetchRecipes),
 //     switchMap(() => {
@@ -45,6 +62,6 @@ export class BotEffects {
 //     {dispatch: false}
 //   );
 //
-//   constructor(private actions$: Actions, private httpClient: HttpClient, private store: Store<AppState>) {
-//   }
+  constructor(private actions$: Actions, private httpClient: HttpClient, private store: Store<AppState>) {
+  }
 }

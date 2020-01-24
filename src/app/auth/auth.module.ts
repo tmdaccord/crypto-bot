@@ -6,6 +6,8 @@ import {AuthRoutingModule} from './auth-routing.module';
 import {MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatIconModule, MatInputModule} from '@angular/material';
 import {ReactiveFormsModule} from '@angular/forms';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {AuthInterceptorService} from "./auth-interceptor.service";
 
 
 
@@ -20,6 +22,13 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
     MatButtonModule,
     MatIconModule,
     MatCheckboxModule
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
   ]
 })
 export class AuthModule { }

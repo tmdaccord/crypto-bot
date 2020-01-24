@@ -16,10 +16,10 @@ const botReducer = createReducer(
   //   ...state,
   //   bots: [...bots]
   // })),
-  // on(BotActions.addBot, (state, {bot}) => ({
-  //   ...state,
-  //   recipes: [...state.recipes, recipe]
-  // })),
+  on(BotActions.addBot, (state, {bot}) => ({
+    ...state,
+    bots: [...state.bots, bot]
+  })),
   // on(BotActions.updateBot, (state, {index, recipe}) => {{
   //   const updatedRecipe = {
   //     ...state.recipes[index],

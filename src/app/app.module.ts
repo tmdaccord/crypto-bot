@@ -11,8 +11,8 @@ import {reducers} from './store/app.reducers';
 import {HttpClientModule} from '@angular/common/http';
 import {EffectsModule} from '@ngrx/effects';
 import {AuthEffects} from './auth/store/auth.effects';
-import {ExchangeRatesModule} from './exchange-rates/exchange-rates.module';
-import {ExchangeRatesEffects} from './exchange-rates/store/exchange-rates.effects';
+import {ExchangesModule} from './exchanges/exchanges.module';
+import {ExchangesEffects} from './exchanges/store/exchanges.effects';
 import {SharedModule} from './shared/shared.module';
 import {BotsModule} from './bots/bots.module';
 import {BotEffects} from "./bots/store/bot.effects";
@@ -28,11 +28,11 @@ import {BotEffects} from "./bots/store/bot.effects";
     AppRoutingModule,
     AuthModule,
     SharedModule,
-    ExchangeRatesModule,
-    BotsModule,
+    ExchangesModule,
     CoreModule,
+    BotsModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([AuthEffects, ExchangeRatesEffects, BotEffects]),
+    EffectsModule.forRoot([AuthEffects, ExchangesEffects, BotEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent]

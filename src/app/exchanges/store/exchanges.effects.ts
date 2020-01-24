@@ -1,10 +1,12 @@
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {Injectable} from '@angular/core';
-import * as RatesActions from './exchange-rates.actions';
+import * as ExchangesActions from './exchanges.actions';
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 import {Rate} from '../rate.model';
 import {of} from 'rxjs';
+import * as BotActions from "../../bots/store/bot.actions";
+import {Exchange} from "../../bots/exchange.model";
 
 const handleError = (errorResponse) => {
   console.log(errorResponse);
@@ -33,25 +35,36 @@ const handleError = (errorResponse) => {
   //       break;
   //   }
   // }
-  return of(RatesActions.fetchRatesFail({error: errorMessage}));
+  return of(ExchangesActions.fetchRatesFail({error: errorMessage}));
 };
 
 @Injectable()
-export class ExchangeRatesEffects {
+export class ExchangesEffects {
   fetchRates$ = createEffect(() => this.actions$.pipe(
-    ofType(RatesActions.fetchRates),
+    ofType(ExchangesActions.fetchRates),
     switchMap(() => {
       return this.httpClient.get('https://apiv2.bitcoinaverage.com/constants/exchangerates/global').pipe(
         catchError(errorResponse => handleError(errorResponse)),
         map((response: { rates }) => {
           const responseRates = response.rates;
           if (!responseRates) {
-            return RatesActions.fetchRatesFail({error: 'Something wrong!'});
+            return ExchangesActions.fetchRatesFail({error: 'Something wrong!'});
           }
           const rates = Object.keys(responseRates).map(key => {
             return new Rate(key, responseRates[key].name, responseRates[key].rate);
           });
-          return RatesActions.setRates({rates});
+          return ExchangesActions.setRates({rates});
+        })
+      );
+    })
+  ));
+
+  fetchExchanges$ = createEffect(() => this.actions$.pipe(
+    ofType(ExchangesActions.fetchExchanges),
+    switchMap(() => {
+      return this.httpClient.get<Exchange[]>('https://ng-crypto-bot.firebaseio.com/exchanges.json').pipe(
+        map(exchanges => {
+          return ExchangesActions.setExchanges({exchanges});
         })
       );
     })

@@ -1,9 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {AppState} from '../store/app.reducers';
-import * as RatesActions from './store/exchange-rates.actions';
-import {Rate} from './rate.model';
-import {Observable, Subscription} from 'rxjs';
+import {AppState} from '../../store/app.reducers';
+import * as RatesActions from '../store/exchanges.actions';
+import {Rate} from '../rate.model';
+import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 @Component({
@@ -19,7 +19,7 @@ export class ExchangeRatesComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(RatesActions.fetchRates());
-    this.rates = this.store.select('exchangeRates')
+    this.rates = this.store.select('exchanges')
       .pipe(map(ratesState => {
         return ratesState.rates;
       }));

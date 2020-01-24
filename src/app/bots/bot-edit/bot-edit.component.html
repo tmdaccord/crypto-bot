@@ -1,0 +1,22 @@
+<form [formGroup]="botForm" (ngSubmit)="onSubmit()">
+  <button type="submit" class="" [disabled]="!botForm.valid">Save</button>
+  <button type="button" class="" (click)="onCancel()">Cancel</button>
+
+  <mat-form-field>
+    <input matInput placeholder="Name"
+           [formControl]="nameInput"
+           required
+    >
+    <mat-error *ngIf="nameInput.invalid">This is a required field</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Exchange</mat-label>
+    <mat-select [formControl]="exchangesSelect">
+      <mat-option *ngFor="let exchange of exchanges" [value]="exchange.id">
+        {{exchange.name}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="exchangesSelect.invalid">You must select an exchange</mat-error>
+  </mat-form-field>
+</form>

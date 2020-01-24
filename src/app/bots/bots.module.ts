@@ -6,6 +6,10 @@ import { BotDetailComponent } from './bot-detail/bot-detail.component';
 import { BotEditComponent } from './bot-edit/bot-edit.component';
 import { BotsComponent } from './bots.component';
 import { BotStartComponent } from './bot-start/bot-start.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
 
 
 
@@ -13,7 +17,11 @@ import { BotStartComponent } from './bot-start/bot-start.component';
   declarations: [BotsListComponent, BotDetailComponent, BotEditComponent, BotsComponent, BotStartComponent],
   imports: [
     CommonModule,
-    BotsRoutingModule
+    BotsRoutingModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
   ]
 })
 export class BotsModule { }

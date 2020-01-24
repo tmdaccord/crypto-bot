@@ -14,7 +14,7 @@ const botsRoutes: Routes = [
       {path: 'new', component: BotEditComponent},
       {path: ':id', component: BotDetailComponent},
       {path: ':id/edit', component: BotEditComponent}
-    ], pathMatch: 'full'
+    ]
   }
 ];
 

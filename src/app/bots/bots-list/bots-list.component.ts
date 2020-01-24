@@ -18,6 +18,7 @@ export class BotsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+
     this.subscription = this.store.select('userBots')
       .pipe(map(botsState => {
         return botsState.bots;
