@@ -12,7 +12,7 @@
     <li *ngIf="isAuthenticated">
       <span [matMenuTriggerFor]="afterMenu" class="nav-item">My Account</span>
       <mat-menu #afterMenu="matMenu" xPosition="after">
-        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Edit</button>
         <button mat-menu-item (click)="onSignout()">Signout</button>
       </mat-menu>
     </li>

@@ -4,6 +4,7 @@ import {Subscription} from "rxjs";
 import {Store} from "@ngrx/store";
 import {AppState} from "../../store/app.reducers";
 import {map} from "rxjs/operators";
+import * as BotActions from '../store/bot.actions';
 
 @Component({
   selector: 'app-bots-list',
@@ -18,7 +19,7 @@ export class BotsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-
+    this.store.dispatch(BotActions.fetchBots());
     this.subscription = this.store.select('userBots')
       .pipe(map(botsState => {
         return botsState.bots;
@@ -28,7 +29,7 @@ export class BotsListComponent implements OnInit, OnDestroy {
       });
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 

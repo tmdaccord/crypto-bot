@@ -1,7 +1,4 @@
 <form [formGroup]="botForm" (ngSubmit)="onSubmit()">
-  <button type="submit" class="" [disabled]="!botForm.valid">Save</button>
-  <button type="button" class="" (click)="onCancel()">Cancel</button>
-
   <mat-form-field>
     <input matInput placeholder="Name"
            [formControl]="nameInput"
@@ -19,4 +16,7 @@
     </mat-select>
     <mat-error *ngIf="exchangesSelect.invalid">You must select an exchange</mat-error>
   </mat-form-field>
+
+  <button type="submit" class="" [disabled]="!botForm.valid">Save</button>
+  <button type="button" class="" (click)="onCancel()">Cancel</button>
 </form>

@@ -5,7 +5,6 @@ import {catchError, map, switchMap} from 'rxjs/operators';
 import {HttpClient} from '@angular/common/http';
 import {Rate} from '../rate.model';
 import {of} from 'rxjs';
-import * as BotActions from "../../bots/store/bot.actions";
 import {Exchange} from "../../bots/exchange.model";
 
 const handleError = (errorResponse) => {

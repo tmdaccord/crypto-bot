@@ -30,7 +30,7 @@ export class SigninComponent implements OnInit, OnDestroy {
     this.initForm();
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     this.storeSub.unsubscribe();
   }
 

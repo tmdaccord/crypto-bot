@@ -45,7 +45,7 @@ export class BotEditComponent implements OnInit, OnDestroy {
     // const bot = new Bot(botFormValue.);
 
     if (this.editMode) {
-      // this.store.dispatch(RecipeActions.updateRecipe({index: this.id, recipe: this.recipeForm.value}));
+      // this.store.dispatch(BotActions.updateBot({}));
     } else {
       this.store.dispatch(BotActions.addBot({bot: this.botForm.value}));
     }
@@ -63,7 +63,7 @@ export class BotEditComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     // this.botSubscription.unsubscribe();
     this.exchangesSubscription.unsubscribe()
   }
